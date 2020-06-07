@@ -1,8 +1,9 @@
 from kivy.app import App
 from kivy.uix.widget import Widget
 from kivy.properties import (
-    NumericProperty, ReferenceListProperty, ObjectProperty)
-from kivy.vector import Vector
+    NumericProperty, ReferenceListProperty, ObjectProperty
+)
+from kivy.vector import Vectors
 from kivy.clock import Clock
 
 
