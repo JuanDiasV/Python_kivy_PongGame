@@ -3,7 +3,7 @@ from kivy.uix.widget import Widget
 from kivy.properties import (
     NumericProperty, ReferenceListProperty, ObjectProperty
 )
-from kivy.vector import Vectors
+from kivy.vector import Vector
 from kivy.clock import Clock
 #from kivy.graphics import Color
 
@@ -34,7 +34,6 @@ class PongGame(Widget):
     player1 = ObjectProperty(None)
     player2 = ObjectProperty(None)
     winner = ObjectProperty('')
-    counter = 0
 
     def serve_ball(self, vel=(4, 0)):
         self.ball.center = self.center
@@ -55,25 +54,21 @@ class PongGame(Widget):
         if self.ball.x < self.x:
             self.player2.score += 1
             self.serve_ball(vel=(4, 0))
+            self.winner = ''
         if self.ball.x > self.width:
             self.player1.score += 1
             self.serve_ball(vel=(-4, 0))
+            self.winner = ''
 
         # anyone got the amount of points to win reset the score
         if self.player1.score == 10:
             self.player1.score = 0
             self.player2.score = 0
-            self.winner = '1 wins'
-            counter = 0
+            self.winner = 'Player 1 wins'
         if self.player1.score == 10:
             self.player1.score = 0
             self.player2.score = 0
-            self.winner = '2 wins'
-            counter = 0
-
-        if counter >= 300:
-            self.winner = ''
-
+            self.winner = 'Player 2 wins'
 
     def on_touch_move(self, touch):
         if touch.x < self.width / 3:
