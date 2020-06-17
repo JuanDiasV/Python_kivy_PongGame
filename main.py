@@ -65,7 +65,7 @@ class PongGame(Widget):
             self.player1.score = 0
             self.player2.score = 0
             self.winner = 'Player 1 wins'
-        if self.player1.score == 10:
+        if self.player2.score == 10:
             self.player1.score = 0
             self.player2.score = 0
             self.winner = 'Player 2 wins'
